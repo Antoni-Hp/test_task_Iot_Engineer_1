@@ -1,0 +1,5 @@
+W folderze znajdują się przykładowe logi sczytane z urządzeń. 
+Każdy log jest zapisany w pliku json którego nazwa jest datą stworzenia logu. 
+Prosze o wykonaniu skryptu najlepiej w języku python, który z logów stworzy plik excel przedstawiający czytelnie wnioski wynikające z analizowanych logów.
+Proszę także o stworzenie krótkiego opisu wniosków, które da się zaobserwować z logów.
+Zadanie wraz z wynikami proszę umieścić na zdalnym repozytorium i odesłać link do niego.
