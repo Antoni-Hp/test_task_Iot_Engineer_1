@@ -6,7 +6,8 @@ from pprint import pprint
 
 def file_name(path):
     file = (os.listdir(path))
-    print(check_file(file))
+    data = upload_json(check_file(file), path)
+    return data
 
 
 def check_file(file):
@@ -17,7 +18,12 @@ def check_file(file):
     return json_file
 
 
-def upload_json(file):
+def upload_json(file, path):
 
-    data = json.load(open(file))
-    return data
+    all_data=[]
+    for file_logs_name in file:
+        data = json.load(open(path + file_logs_name))
+        all_data.append(data)
+    #    print(data)
+    #print(all_data)
+    return all_data
