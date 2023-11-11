@@ -20,10 +20,13 @@ def check_file(file):
 
 def upload_json(file, path):
 
-    all_data=[]
+    all_data = []
+    headers = []
     for file_logs_name in file:
-        data = json.load(open(path + file_logs_name))
-        all_data.append(data)
-    #    print(data)
-    #print(all_data)
-    return all_data
+        data = json.load(open(path + file_logs_name)) # wszystkie dane z logu jako słownik
+        all_data.append(data)   #tworzy tabele z słownikami zawierajacymi dane z logów
+        data_tmp=(data.keys())  #wszystkie klucze z danego logu - nagłówki
+        for i in data_tmp:
+            if not i in headers :   #sprawdzenie czy nagłówek jest już w tabeli
+                headers.append(i)   # jeżeli nie to dodaj - tworzy unikatową tabele z wszystkimi nagłówkami
+    return all_data, headers    #zwraca tabele z wszystkimi danymi i nagłówki

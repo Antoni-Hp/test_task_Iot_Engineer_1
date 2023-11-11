@@ -6,7 +6,7 @@ import create_excel
 
 def print_hi(name):
     data = file.file_name('test_task/')
-    create_excel.dodanie_danych(data)
+    create_excel.dodanie_danych(data[0], data[1])
     #print(file.upload_json())
 
 def Upload_files(filepath):
