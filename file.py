@@ -2,8 +2,6 @@ import json
 import os
 
 
-from pprint import pprint
-
 def file_name(path):
     file = (os.listdir(path))
     data = upload_json(check_file(file), path)
