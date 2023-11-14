@@ -2,24 +2,21 @@ import json
 import os
 
 
-def file_name(path):
-
+def get_data_and_headers(path):
     file = (os.listdir(path))
-    data = upload_json(check_file(file), path)  #wypakowanie wszystkich plików json do słownika
+    data = _upload_json_to_table(_collect_json_file(file), path)  #wypakowanie wszystkich plików json do słownika
     return data
 
 
-def check_file(file):
-
-    json_file = []
+def _collect_json_file(file):
+    json_files = []
     for logs_name in file:
-        if logs_name.endswith(".json"): #weryfikacja czy plik ma rozszerzenie json
-            json_file.append(logs_name)
-    return json_file
+        if logs_name.endswith(".json"):    #weryfikacja czy plik ma rozszerzenie json
+            json_files.append(logs_name)
+    return json_files
 
 
-def upload_json(file, path):
-
+def _upload_json_to_table(file, path):
     all_data = []
     headers = []
     for file_logs_name in file:
