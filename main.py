@@ -1,18 +1,15 @@
 import file
 import create_excel
 
+log_patch = 'test_task/'     #zmienna, w której podajemy ściezkę do folderu z logami
 
 
+def task():
 
-def print_hi(name):
-    data = file.file_name('test_task/')
-    create_excel.dodanie_danych(data[0], data[1])
-    #print(file.upload_json())
+    data = file.file_name(log_patch)
+    create_excel.upload_data(data[0], data[1])
 
-def Upload_files(filepath):
-    date = open(filepath, "r")
 
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-
+    task()
