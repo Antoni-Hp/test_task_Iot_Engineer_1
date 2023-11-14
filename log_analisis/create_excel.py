@@ -10,10 +10,10 @@ chart_sheet = wb.create_sheet("Wykresy", 1)
 i_heating, i_motion, i_temp_sensor, i_door, i_window, i_heat_switch, i_kit_switch, i_wifi = ([] for i in range(8))
 issue_headers = ['issue_heating', 'issue_motion', 'issue_temperature_sensor', 'issue_door', 'issue_window',
                  'issue_heating_switch', 'issue_kitchen_switch', 'issue_wifi']
-excel_file_name = "logs_analysis.xlsx"  # nazwa budowanego pliku excel, ewentualnie ze ścieżką
+not_data = 'NO_DATA'
 
 
-def upload_data(data, headers):
+def upload_data(data, headers, excel_file_name):
     issue_cat = 0
     last_cell = 1
     issues = []
@@ -21,8 +21,8 @@ def upload_data(data, headers):
     for keys in data:
         for unique_headers in headers:  # listuje pojedyńcze unikatowe nagłówki
             if unique_headers not in keys:  # uzupełnia wartości dla brakujących kluczy
-                keys[unique_headers] = 'NO_DATA'
-        _add_data_to_table(headers, keys, issues)
+                keys[unique_headers] = not_data
+        _add_data_to_table(headers, keys)
     for i in [i_heating, i_motion, i_temp_sensor, i_door, i_window, i_heat_switch, i_kit_switch, i_wifi]:
         issues.append(len(i))
     tab = Table(displayName="Tabela1",
@@ -42,7 +42,7 @@ def upload_data(data, headers):
         print(f"Nie można zapisać pliku {excel_file_name}, błąd uprawnień")
 
 
-def _add_data_to_table(headers, data, issues):
+def _add_data_to_table(headers, data):
     data_tmp = {}
     values_tmp = []
     for key in headers:
@@ -54,21 +54,21 @@ def _add_data_to_table(headers, data, issues):
 
 
 def _count_the_issues(keys):
-    if keys[issue_headers[0]] != '' and keys[issue_headers[0]] != 'NO_DATA':
+    if keys[issue_headers[0]] != '' and keys[issue_headers[0]] != not_data:
         i_heating.append(keys[issue_headers[0]].strip())
-    elif keys[issue_headers[1]] != '' and keys[issue_headers[1]] != 'NO_DATA':
+    elif keys[issue_headers[1]] != '' and keys[issue_headers[1]] != not_data:
         i_motion.append(keys[issue_headers[1]].strip())
-    elif keys[issue_headers[2]] != '' and keys[issue_headers[2]] != 'NO_DATA':
+    elif keys[issue_headers[2]] != '' and keys[issue_headers[2]] != not_data:
         i_temp_sensor.append(keys[issue_headers[2]].strip())
-    elif keys[issue_headers[3]] != '' and keys[issue_headers[3]] != 'NO_DATA':
+    elif keys[issue_headers[3]] != '' and keys[issue_headers[3]] != not_data:
         i_door.append(keys[issue_headers[3]].strip())
-    elif keys[issue_headers[4]] != '' and keys[issue_headers[4]] != 'NO_DATA':
+    elif keys[issue_headers[4]] != '' and keys[issue_headers[4]] != not_data:
         i_window.append(keys[issue_headers[4]].strip())
-    elif keys[issue_headers[5]] != '' and keys[issue_headers[5]] != 'NO_DATA':
+    elif keys[issue_headers[5]] != '' and keys[issue_headers[5]] != not_data:
         i_heat_switch.append(keys[issue_headers[5]].strip())
-    elif keys[issue_headers[6]] != '' and keys[issue_headers[6]] != 'NO_DATA':
+    elif keys[issue_headers[6]] != '' and keys[issue_headers[6]] != not_data:
         i_kit_switch.append(keys[issue_headers[6]].strip())
-    elif keys[issue_headers[7]] != '' and keys[issue_headers[7]] != 'NO_DATA':
+    elif keys[issue_headers[7]] != '' and keys[issue_headers[7]] != not_data:
         i_wifi.append(keys[issue_headers[7]].strip())
 
 

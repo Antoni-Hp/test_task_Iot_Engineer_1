@@ -1,0 +1,13 @@
+1. Dane są w wielu przypadkach niekompletne - brakuje nr pokoju lub/i gr
+2. Dane nie zawsze są spójne - dla tych samych pokoi są rózne gr.
+3. Czasem brak "kluczy" tj  np voltage lub temp - nawet jak ich wartości nie ma to przydało by sie dla przejżystosci dodac None
+4. Komunikaty błedów są nie spójne - wygladają na pisane przez człowieka - brak dla nich jakiegos wzorca, Czasem jeden komunikat ma 2 spacje a czasem 1,
+lub zawiera duże litery, albo mimo różnych słów, oznacza to samo - warto to ustandaryzować
+5. measured_temp czasem wynosi 1 - czasem jest zgłoszony przez czujkę na to błąd a czasem nie ma informacji o zadnym błędzie - moim zdaniem trzeba to wyjaśnić
+6. Najwiecej błedów zwraca kontaktron w oknie - najcześciej występujący problem to cały czas zwracany status close - trzeba by sie przyjżeć czujnikowi,
+jeżeli się nie sprawdza to wymienić na inny
+7. Duża ilość błędów jest zwiazanych z czujką w kuchence, są to błędy związane z problemem z kablem/podłączeniem ale duza ilość błędów ma komunikat 'OK'
+co wprowadza w bład  - moim zdaniem 'OK' nie powinno sie znaleźć w polu issue_kitchen_switch
+8. Brak błędów w issue_cheating
+9. W sekcji solutionsm są informacje o rozwiązaniach problemu ale nie ma informacji jakich problemów dotyczyły i jaki problem został rozwiązany.
+10. Podsumowując - sugerował bym ustandaryzowanie komunikatów, wyszczególnienie pól których wartość musi być zawsze podana (np room_number). Przyjżenie sie czujką okiennym

@@ -1,13 +1,8 @@
-import create_data_from_json_file
-import create_excel
-
-log_path = 'test_task/'     #zmienna, w której podajemy ściezkę do folderu z logami
+from log_analisis import create_excel_with_log_analisis as start
 
 
-def task():
-    data = create_data_from_json_file.get_data_and_headers(log_path)     #stworzenie tablicy słowników z danymi pobranymi z plików json
-    create_excel.upload_data(data[0], data[1])
-
+log_path = 'test_task/'     #zmienna, w której podajemy ścieżkę do folderu z logami
+excel_file_name = "logs_analysis.xlsx"  # nazwa budowanego pliku excel, ewentualnie ze ścieżką
 
 if __name__ == '__main__':
-    task()
+    start.task(log_path, excel_file_name)
